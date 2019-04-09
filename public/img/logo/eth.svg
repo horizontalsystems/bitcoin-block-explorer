@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="24px" height="24px" viewBox="0 0 24 24" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 53.2 (72643) - https://sketchapp.com -->
+    <title>eth</title>
+    <desc>Created with Sketch.</desc>
+    <g id="eth" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <path d="M12,0 C5.373,0 0,5.373 0,12 C0,18.628 5.373,24 12,24 C18.628,24 24,18.628 24,12 C24,5.373 18.628,0 12,0 Z M12,20.25 L6.791,13.083 L12,16.124 L17.208,13.083 L12,20.25 Z M12,15.354 L6.791,12.312 L12,3.75 L17.208,12.312 L12,15.354 Z" id="Shape" fill="#8A8A8F" fill-rule="nonzero"></path>
+    </g>
+</svg>

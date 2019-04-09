@@ -144,6 +144,7 @@ module.exports = {
 					links:[
 						{name: "Bitcoin", url:"http://btc.horizontalsystems.xyz", imgUrl:"/img/logo/btc.svg"},
 						{name: "Bitcoin Cash", url:"http://bch.horizontalsystems.xyz", imgUrl:"/img/logo/bch.svg"},
+						{name: "Ethereum", url:"https://eth.horizontalsystems.xyz", imgUrl:"/img/logo/eth.svg"},
 					]
 				}
 			]

@@ -11,9 +11,9 @@ var rpcCred = credentials.rpc;
 
 if (rpcCred.cookie && !rpcCred.username && !rpcCred.password && fs.existsSync(rpcCred.cookie)) {
 	console.log(`Loading RPC cookie file: ${rpcCred.cookie}`);
-	
+
 	[ rpcCred.username, rpcCred.password ] = fs.readFileSync(rpcCred.cookie).toString().split(':', 2);
-	
+
 	if (!rpcCred.password) {
 		throw new Error(`Cookie file ${rpcCred.cookie} in unexpected format`);
 	}
@@ -29,7 +29,7 @@ var electrumXServerUriStrings = (process.env.BTCEXP_ELECTRUMX_SERVERS || "").spl
 var electrumXServers = [];
 for (var i = 0; i < electrumXServerUriStrings.length; i++) {
 	var uri = url.parse(electrumXServerUriStrings[i]);
-	
+
 	electrumXServers.push({protocol:uri.protocol.substring(0, uri.protocol.length - 1), host:uri.hostname, port:parseInt(uri.port)});
 }
 
@@ -54,7 +54,7 @@ module.exports = {
 	demoSite: (process.env.BTCEXP_DEMO.toLowerCase() == "true"),
 	queryExchangeRates: (process.env.BTCEXP_NO_RATES.toLowerCase() != "true"),
 	noInmemoryRpcCache: (process.env.BTCEXP_NO_INMEMORY_RPC_CACHE.toLowerCase() == "true"),
-	
+
 	rpcConcurrency: (process.env.BTCEXP_RPC_CONCURRENCY || 10),
 
 	rpcBlacklist:
@@ -140,11 +140,10 @@ module.exports = {
 			showToolsSubheader:(process.env.BTCEXP_UI_SHOW_TOOLS_SUBHEADER == "true"),
 			dropdowns:[
 				{
-					title:"Related Sites",
+					title:"Blockchains",
 					links:[
-						{name: "Bitcoin Explorer", url:"https://btc.chaintools.io", imgUrl:"/img/logo/btc.svg"},
-						{name: "Litecoin Explorer", url:"https://ltc.chaintools.io", imgUrl:"/img/logo/ltc.svg"},
-						{name: "Lightning Explorer", url:"https://lightning.chaintools.io", imgUrl:"/img/logo/lightning.svg"},
+						{name: "Bitcoin", url:"http://btc.horizontalsystems.xyz", imgUrl:"/img/logo/btc.svg"},
+						{name: "Bitcoin Cash", url:"http://bch.horizontalsystems.xyz", imgUrl:"/img/logo/bch.svg"},
 					]
 				}
 			]

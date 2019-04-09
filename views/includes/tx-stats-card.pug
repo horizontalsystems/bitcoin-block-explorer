@@ -1,0 +1,39 @@
+if (txStats)
+	div(class="card mb-4 shadow-sm")
+		div(class="card-header")
+			div(class="row")
+				div(class="col")
+					h2(class="h6 mb-0") Transaction Stats Summary
+
+				div(class="col")
+					span(style="float: right;")
+						a(href="/tx-stats")
+							span  Transaction Stats &raquo;
+
+		div(class="card-body")
+			if (true)
+				div(class="row")
+					div(class="col-lg-6")
+						div(class="table-responsive")
+							table(class="table text-right mb-4 mb-lg-0")
+								thead
+									tr
+										th Period
+										th Transactions
+										th Transactions Per Sec
+								tbody
+									each item, index in chainTxStats
+										tr(class="monospace")
+											td #{chainTxStatsLabels[index]}
+											td #{item.window_tx_count && item.window_tx_count.toLocaleString()}
+											td #{item.txrate && new Decimal(item.txrate).toDecimalPlaces(4)}
+
+
+					div(class="col-lg-6")
+						script var txRateDataDay = [];
+						each item, index in txStats.txCountStats.txRates
+							script txRateDataDay.push({x:#{item.x}, y:#{item.y}});
+
+						- var graphData = {id:"graphRateDay", dataVar:"txRateDataDay", labels:txStats.txCountStats.txLabels, title:"Tx Rate, 24hr", xaxisTitle:"Block", xaxisStep:5, yaxisTitle:"Tx Per Sec"};
+
+						include line-graph.pug

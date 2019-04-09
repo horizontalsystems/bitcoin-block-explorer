@@ -223,8 +223,9 @@ strong {
 	.tx-io-value { max-width: 30%; text-align: right; padding-right: 25px; }
 }
 
-
-
+.input-group-filter {
+	min-width: 300px;
+}
 
 
 footer a {
@@ -236,11 +237,15 @@ footer a:hover {
 	color: white;
 }
 
-.table-striped>tbody>tr:nth-child(odd)>td, 
+.table-striped>tbody>tr:nth-child(odd)>td,
 .table-striped>tbody>tr:nth-child(odd)>th {
 	/*background-color: #fbfbfb;*/
 }
 
 .hljs-type, .hljs-string, .hljs-number, .hljs-selector-id, .hljs-selector-class, .hljs-quote, .hljs-template-tag, .hljs-deletion {
 	color: #3aa54f;
+}
+
+.icon-yellow {
+	color: #ffad00;
 }

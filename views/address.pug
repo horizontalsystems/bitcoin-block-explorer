@@ -13,7 +13,7 @@ block content
 			h1(class="h3") Address
 				br
 				small(class="monospace") #{address}
-			
+
 			hr
 
 			if (payoutAddressForMiner)
@@ -24,13 +24,13 @@ block content
 					h4(class="alert-heading h6 font-weight-bold") #{coinConfig.name} Fun
 
 					p
-						span This looks like a miner payout address for  
+						span This looks like a miner payout address for
 						span(class="font-weight-bold") #{payoutAddressForMiner.name}
 						if (coinConfig.miningPoolsConfigUrls.length > 1)
-							span  (see the configurations: 
+							span  (see the configurations:
 							each item, index in coinConfig.miningPoolsConfigUrls
 								if (index > 0)
-									span , 
+									span ,
 								a(href=item) config ##{index + 1}
 							span )
 						else
@@ -61,7 +61,7 @@ block content
 							span !{saInfo.alertBodyHtml}
 
 							if (saInfo.referenceUrl && saInfo.referenceUrl.trim().length > 0 && saInfo.alertBodyHtml.indexOf(saInfo.referenceUrl) == -1)
-								span  
+								span
 									a(href=saInfo.referenceUrl) Read more
 
 					else
@@ -69,14 +69,14 @@ block content
 							span #{saInfo.summary}
 
 							if (saInfo.referenceUrl && saInfo.referenceUrl.trim().length > 0)
-								span  
+								span
 									a(href=saInfo.referenceUrl) Read more
 
 
 			if (false)
 				pre
 					code(class="json bg-light") #{JSON.stringify(addressObj, null, 4)}
-			
+
 			ul(class='nav nav-tabs mb-3')
 				li(class="nav-item")
 					a(data-toggle="tab", href="#tab-details", class="nav-link active", role="tab") Details
@@ -149,7 +149,7 @@ block content
 												span #{moment.utc(new Date(firstSeenTransaction.time * 1000)).format("Y-MM-DD HH:mm:ss")} utc
 												- var timeAgoTime = firstSeenTransaction.time;
 												include includes/time-ago.pug
-												
+
 												if (false)
 													pre
 														code(class="json bg-light") #{JSON.stringify(firstSeenTransaction)}
@@ -164,7 +164,7 @@ block content
 													each item in balance.conflictedResults
 														- var currencyValue = item.confirmed / coinConfig.baseCurrencyUnit.multiplier;
 														include includes/value-display.pug
-														
+
 
 										else
 											div(class="row")
@@ -258,11 +258,11 @@ block content
 									div(class="dropdown-menu dropdown-menu-right")
 										a(href=("/address/" + address), class="dropdown-item")
 											if (sort == "desc")
-												i(class="fa fa-check") 
+												i(class="fa fa-check")
 											span  Newest First
 										a(href=("/address/" + address + "?sort=asc"), class="dropdown-item")
 											if (sort != "desc")
-												i(class="fa fa-check") 
+												i(class="fa fa-check")
 											span  Oldest First
 
 						div(class="card-body")
@@ -272,14 +272,14 @@ block content
 										i(class="fas fa-exclamation-triangle fa-2x", style="margin-top: 10px;")
 									h4(class="alert-heading h6 font-weight-bold") Trust Warning
 									p
-										span The transaction history for this address was requested from mulitple ElectrumX servers and the results did not match. The results below were obtained only from 
+										span The transaction history for this address was requested from mulitple ElectrumX servers and the results did not match. The results below were obtained only from
 										span(class="font-weight-bold") #{electrumHistory.server}
 
-							
+
 							if (advancedFunctionality)
 								if (electrumHistoryError && electrumHistoryError.error && electrumHistoryError.error.code && electrumHistoryError.error.code == -32600)
-									span Failed to retrieve transaction history from ElectrumX. See 
-									a(href="https://github.com/janoside/btc-rpc-explorer/issues/67") Issue #67
+									span Failed to retrieve transaction history from ElectrumX. See
+									a(href="https://github.com/horizontalsystems/block-explorer/issues/67") Issue #67
 									span  for more information.
 
 								else if (transactions.length == 0)
@@ -303,7 +303,7 @@ block content
 														a(href=("/tx/" + tx.txid)) #{tx.txid}
 
 														if (global.specialTransactions && global.specialTransactions[tx.txid])
-															span  
+															span
 															a(data-toggle="tooltip", title=(coinConfig.name + " Fun! See transaction for details"))
 																i(class="fas fa-certificate text-primary")
 
@@ -324,13 +324,13 @@ block content
 															include includes/value-display.pug
 
 														if (addrLossesByTx[tx.txid])
-															span  / 
+															span  /
 
 													if (addrLossesByTx[tx.txid])
 														- var currencyValue = addrLossesByTx[tx.txid];
 														span(class="text-danger") -
 															include includes/value-display.pug
-													
+
 										div(class="card-body")
 											if (true)
 												- var txInputs = txInputsByTransaction[tx.txid];
@@ -340,9 +340,9 @@ block content
 												include includes/transaction-io-details.pug
 
 							else
-								p Since this explorer is database-free, it doesn't natively support address transaction history. However, you can configure it to communicate with one or more ElectrumX servers to build and display this data. In doing so, you should be aware that you'll be trusting those ElectrumX servers. If you configure multiple servers the results obtained from each will be cross-referenced against the others. Communicating with ElectrumX servers will also impact your privacy since the servers will know what addresses you're interested in. If these tradeoffs are acceptable, you can see a list of public ElectrumX servers here: 
+								p Since this explorer is database-free, it doesn't natively support address transaction history. However, you can configure it to communicate with one or more ElectrumX servers to build and display this data. In doing so, you should be aware that you'll be trusting those ElectrumX servers. If you configure multiple servers the results obtained from each will be cross-referenced against the others. Communicating with ElectrumX servers will also impact your privacy since the servers will know what addresses you're interested in. If these tradeoffs are acceptable, you can see a list of public ElectrumX servers here:
 								a(href="https://uasf.saltylemon.org/electrum") https://uasf.saltylemon.org/electrum
-							
+
 							if (false)
 								pre
 									code(class="json bg-light") #{JSON.stringify(transactions, null, 4)}
@@ -361,8 +361,8 @@ block content
 
 								include includes/pagination.pug
 
-							
-				
+
+
 
 				div(id="tab-json", class="tab-pane", role="tabpanel")
 					div(class="highlight")
@@ -379,4 +379,4 @@ block content
 							pre
 								code(class="json bg-light", data-lang="json") #{JSON.stringify(electrumHistory, null, 4)}
 
-		
+

@@ -97,14 +97,6 @@ html(lang="en")
 											i(class="fas fa-check icon-yellow")
 										span  Dark
 
-		if (host && port && !homepage && config.site.header.showToolsSubheader)
-			div(id="sub-menu", class="container mb-2 pt-2 d-lg-block d-none border-top", style="")
-				ul(class="nav")
-					each item, index in config.siteTools
-						li(class="nav-item")
-							a(href=item.url, class="nav-link text-white px-2 text-decoration-underline")
-								span #{item.name}
-
 		- var bodyBgColor = "#ffffff;";
 		if (session.uiTheme && session.uiTheme == "dark")
 			- bodyBgColor = "#0c0c0c;";

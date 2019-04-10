@@ -247,5 +247,16 @@ footer a:hover {
 }
 
 .icon-yellow {
-	color: #ffad00;
+	color: #ff9e00;
+}
+
+.border-yellow {
+	border-color: #ff9e00 !important;
+}
+
+.btn-yellow {
+	min-width: 32px;
+	color: #212529;
+	background-color: #ff9e00;
+	border-color: #ff9e00;
 }

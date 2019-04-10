@@ -70,13 +70,12 @@ html(lang="en")
 							div(class="input-group input-group-sm input-group-filter")
 								input(type="text", class="form-control form-control-sm", name="query", placeholder="Block Height/Hash, TxId or Address", value=(query))
 								div(class="input-group-append")
-									button(type="submit", class="btn btn-warning")
+									button(type="submit", class="btn btn-yellow")
 										i(class="fas fa-search")
 
 						ul(class="navbar-nav")
 							li(class="nav-item dropdown")
 								a(class="nav-link dropdown-toggle", href="javascript:void(0)", id="navbarDropdown", role="button", data-toggle="dropdown", aria-haspopup="true", aria-expanded="false")
-									i(class="fas fa-cog mr-1")
 								div(class="dropdown-menu", aria-labelledby="navbarDropdown")
 									if (coinConfig.currencyUnits)
 										span(class="dropdown-header") Currency Units
@@ -85,17 +84,17 @@ html(lang="en")
 												a(class="dropdown-item", href=("/changeSetting?name=currencyFormatType&value=" + item.values[0]))
 													each valueName in item.values
 														if (currencyFormatType == valueName)
-															i(class="fas fa-check")
+															i(class="fas fa-check icon-yellow")
 													span  #{item.name}
 
 									span(class="dropdown-header") Theme
 									a(class="dropdown-item", href="/changeSetting?name=uiTheme&value=light")
 										if (session.uiTheme == "light" || session.uiTheme == "")
-											i(class="fas fa-check")
+											i(class="fas fa-check icon-yellow")
 										span  Light
 									a(class="dropdown-item", href="/changeSetting?name=uiTheme&value=dark")
 										if (session.uiTheme == "dark")
-											i(class="fas fa-check")
+											i(class="fas fa-check icon-yellow")
 										span  Dark
 
 		if (host && port && !homepage && config.site.header.showToolsSubheader)
@@ -123,7 +122,7 @@ html(lang="en")
 				if (config.demoSite)
 					include ./includes/donation-modal.pug
 
-		footer(class="footer border-top border-primary bg-dark pt-3 pb-1 px-3 text-white", style="border-width: 5px !important;")
+		footer(class="footer border-top border-yellow bg-dark pt-3 pb-1 px-3 text-white", style="border-width: 5px !important;")
 			div(class="container")
 				div(class="row")
 					div(class="col-md-5")

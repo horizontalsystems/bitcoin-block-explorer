@@ -110,7 +110,7 @@ block content
 							div(class="row")
 								div(class="col-md-6")
 
-									if (addressObj.hash)
+									if (addressObj && addressObj.hash)
 										div(class="row")
 											div(class="summary-split-table-label") Hash 160
 											div(class="summary-split-table-content monospace") #{addressObj.hash.toString("hex")}
@@ -120,7 +120,7 @@ block content
 											div(class="summary-split-table-label") Script Public Key
 											div(class="summary-split-table-content monospace") #{result.validateaddress.scriptPubKey}
 
-									if (addressObj.hasOwnProperty("version"))
+									if (addressObj && addressObj.hasOwnProperty("version"))
 										div(class="row")
 											div(class="summary-split-table-label") Version
 											div(class="summary-split-table-content monospace") #{addressObj.version}

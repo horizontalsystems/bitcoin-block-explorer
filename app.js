@@ -28,7 +28,6 @@ var Decimal = require('decimal.js');
 var bitcoinCore = require("bitcoin-core");
 var pug = require("pug");
 var momentDurationFormat = require("moment-duration-format");
-var coreApi = require("./app/api/coreApi.js");
 var coins = require("./app/coins.js");
 var request = require("request");
 var qrcode = require("qrcode");

@@ -140,7 +140,7 @@ module.exports = {
 			showToolsSubheader:(process.env.BTCEXP_UI_SHOW_TOOLS_SUBHEADER == "true"),
 			dropdowns:[
 				{
-					title:"Blockchains",
+					title:"Networks",
 					links:[
 						{name: "Bitcoin", url:"http://btc.horizontalsystems.xyz", imgUrl:"/img/logo/btc.svg"},
 						{name: "Bitcoin Cash", url:"http://bch.horizontalsystems.xyz", imgUrl:"/img/logo/bch.svg"},

@@ -2,18 +2,18 @@ extends layout
 
 block headContent
 	title Node Status
-	
+
 block content
 	h1(class="h3") Node Status
 	hr
 
 	if (getblockchaininfo)
 		if (false)
-			p Data from RPC commands 
+			p Data from RPC commands
 				a(href="/rpc-browser?method=getblockchaininfo") getblockchaininfo
-				span , 
+				span ,
 				a(href="/rpc-browser?method=getnetworkinfo") getnetworkinfo
-				span , and 
+				span , and
 				a(href="/rpc-browser?method=getnettotals") getnettotals
 
 		if (false)
@@ -69,7 +69,7 @@ block content
 								td(class="properties-header") Difficulty
 								td(class="monospace")
 									- var difficultyData = utils.formatLargeNumber(getblockchaininfo.difficulty, 3);
-									
+
 									span(title=parseFloat(getblockchaininfo.difficulty).toLocaleString(), data-toggle="tooltip")
 										span #{difficultyData[0]}
 										span  x 10
@@ -91,16 +91,17 @@ block content
 							tr
 								td(class="properties-header") Network Traffic
 								td(class="monospace")
-									- var downData = utils.formatLargeNumber(getnettotals.totalbytesrecv, 2);
-									- var downRateData = utils.formatLargeNumber(getnettotals.totalbytesrecv / uptimeSeconds, 2);
-									- var upData = utils.formatLargeNumber(getnettotals.totalbytessent, 2);
-									- var upRateData = utils.formatLargeNumber(getnettotals.totalbytessent / uptimeSeconds, 2);
+									if (getnettotals)
+										- var downData = utils.formatLargeNumber(getnettotals.totalbytesrecv, 2);
+										- var downRateData = utils.formatLargeNumber(getnettotals.totalbytesrecv / uptimeSeconds, 2);
+										- var upData = utils.formatLargeNumber(getnettotals.totalbytessent, 2);
+										- var upRateData = utils.formatLargeNumber(getnettotals.totalbytessent / uptimeSeconds, 2);
 
-									span Total Download: #{downData[0]} #{downData[1].abbreviation}B
-									span(class="text-muted")  (avg #{downRateData[0]} #{downRateData[1].abbreviation}B/s)
-									br
-									span Total Upload: #{upData[0]} #{upData[1].abbreviation}B
-									span(class="text-muted")  (avg #{upRateData[0]} #{upRateData[1].abbreviation}B/s)
+										span Total Download: #{downData[0]} #{downData[1].abbreviation}B
+										span(class="text-muted")  (avg #{downRateData[0]} #{downRateData[1].abbreviation}B/s)
+										br
+										span Total Upload: #{upData[0]} #{upData[1].abbreviation}B
+										span(class="text-muted")  (avg #{upRateData[0]} #{upRateData[1].abbreviation}B/s)
 
 							tr
 								td(class="properties-header") Warnings
@@ -119,7 +120,7 @@ block content
 						a(data-toggle="tab", href="#tab-getnettotals", class="nav-link", role="tab") getnettotals
 					li(class="nav-item")
 						a(data-toggle="tab", href="#tab-getnetworkinfo", class="nav-link", role="tab") getnetworkinfo
-				
+
 				div(class="tab-content")
 					div(id="tab-getblockchaininfo", class="tab-pane active", role="tabpanel")
 						pre
@@ -132,5 +133,4 @@ block content
 					div(id="tab-getnetworkinfo", class="tab-pane", role="tabpanel")
 						pre
 							code(class="json bg-light", data-lang="json") #{JSON.stringify(getnetworkinfo, null, 4)}
-							
-										
+

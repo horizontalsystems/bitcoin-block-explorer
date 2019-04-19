@@ -192,7 +192,7 @@ router.get("/peers", function(req, res, next) {
 		if (peerIps.length > 0) {
 			utils.geoLocateIpAddresses(peerIps).then(function(results) {
 				res.locals.peerIpSummary = results;
-				
+
 				res.render("peers");
 
 				next();
@@ -312,7 +312,7 @@ router.get("/blocks", function(req, res, next) {
 				}
 			}
 		}
-		
+
 		coreApi.getBlocksByHeight(blockHeights).then(function(blocks) {
 			res.locals.blocks = blocks;
 
@@ -505,7 +505,7 @@ router.get("/block/:blockHash", function(req, res, next) {
 	res.locals.limit = limit;
 	res.locals.offset = offset;
 	res.locals.paginationBaseUrl = "/block/" + blockHash;
-	
+
 	coreApi.getBlockByHashWithTransactions(blockHash, limit, offset).then(function(result) {
 		res.locals.result.getblock = result.getblock;
 		res.locals.result.transactions = result.transactions;
@@ -572,7 +572,7 @@ router.get("/address/:address", function(req, res, next) {
 	var offset = 0;
 	var sort = "desc";
 
-	
+
 	if (req.query.limit) {
 		limit = parseInt(req.query.limit);
 
@@ -601,7 +601,7 @@ router.get("/address/:address", function(req, res, next) {
 	res.locals.sort = sort;
 	res.locals.paginationBaseUrl = ("/address/" + address + "?sort=" + sort);
 	res.locals.transactions = [];
-	
+
 	res.locals.result = {};
 
 	try {
@@ -694,7 +694,7 @@ router.get("/address/:address", function(req, res, next) {
 						// remove it for proper paging
 						pagedTxids.unshift(txidResult.result[0].tx_hash);
 					}
-					
+
 					coreApi.getRawTransactionsWithInputs(pagedTxids).then(function(rawTxResult) {
 						// first result is always the earliest tx, but doesn't fit into the current paging;
 						// store it as firstSeenTransaction then remove from list
@@ -751,7 +751,7 @@ router.get("/address/:address", function(req, res, next) {
 
 						reject(err);
 					});
-				
+
 				}).catch(function(err) {
 					res.locals.electrumHistoryError = err;
 
@@ -799,7 +799,7 @@ router.get("/address/:address", function(req, res, next) {
 
 			next();
 		});
-		
+
 	}).catch(function(err) {
 		res.locals.userMessage = "Failed to load address " + address + " (" + err + ")";
 
@@ -810,10 +810,10 @@ router.get("/address/:address", function(req, res, next) {
 });
 
 router.get("/rpc-terminal", function(req, res, next) {
-	if (!config.demoSite && !req.authenticated) {
-		res.send("RPC Terminal / Browser may not be accessed without logging-in. This restriction can be modified in your config.js file.");
-		return;
-	}
+// 	if (!config.demoSite && !req.authenticated) {
+// 		res.send("RPC Terminal / Browser may not be accessed without logging-in. This restriction can be modified in your config.js file.");
+// 		return;
+// 	}
 
 	res.render("terminal");
 
@@ -821,13 +821,13 @@ router.get("/rpc-terminal", function(req, res, next) {
 });
 
 router.post("/rpc-terminal", function(req, res, next) {
-	if (!config.demoSite && !req.authenticated) {
-		res.send("RPC Terminal / Browser may not be accessed without logging-in. This restriction can be modified in your config.js file.");
-
-		next();
-
-		return;
-	}
+// 	if (!config.demoSite && !req.authenticated) {
+// 		res.send("RPC Terminal / Browser may not be accessed without logging-in. This restriction can be modified in your config.js file.");
+//
+// 		next();
+//
+// 		return;
+// 	}
 
 	var params = req.body.cmd.trim().split(/\s+/);
 	var cmd = params.shift();
@@ -884,10 +884,10 @@ router.post("/rpc-terminal", function(req, res, next) {
 });
 
 router.get("/rpc-browser", function(req, res, next) {
-	if (!config.demoSite && !req.authenticated) {
-		res.send("RPC Terminal / Browser may not be accessed without logging-in. This restriction can be modified in your config.js file.");
-		return;
-	}
+// 	if (!config.demoSite && !req.authenticated) {
+// 		res.send("RPC Terminal / Browser may not be accessed without logging-in. This restriction can be modified in your config.js file.");
+// 		return;
+// 	}
 
 	coreApi.getHelp().then(function(result) {
 		res.locals.gethelp = result;
@@ -930,7 +930,7 @@ router.get("/rpc-browser", function(req, res, next) {
 									}
 
 									break;
-									
+
 								} else {
 									console.log(`Unknown argument property: ${argProperties[j]}`);
 								}
@@ -1093,7 +1093,7 @@ router.get("/fun", function(req, res, next) {
 	});
 
 	res.locals.historicalData = sortedList;
-	
+
 	res.render("fun");
 
 	next();
